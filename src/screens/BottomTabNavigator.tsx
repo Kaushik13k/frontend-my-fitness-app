@@ -1,22 +1,21 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faHome,
-  faUser,
-  faDumbbell,
-  // faCog,
-} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faUser, faDumbbell} from '@fortawesome/free-solid-svg-icons';
 
 import HomeScreen from './HomeScreen/HomeScreen';
-import ProfileScreen from './ProfileScreen/ProfileScreen';
+import AboutScreen from './AboutScreen/AboutScreen';
 import WorkoutScreen from './WorkoutScreen/WorkoutScreen';
 
 const Tab = createBottomTabNavigator();
 
+interface Props {
+  userData: any; // Define the type of userData prop
+}
+
 const iconMap = {
   Home: faHome,
-  Profile: faUser,
+  About: faUser,
   Workouts: faDumbbell,
   // Settings: faCog,
 };
@@ -27,7 +26,7 @@ const iconStyle = {
   backgroundColor: 'black',
 };
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator: React.FC<Props> = ({userData}) => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -42,9 +41,18 @@ const BottomTabNavigator = () => {
           borderTopColor: '#ffcc02',
         },
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        initialParams={{userData: userData}}
+      />
       <Tab.Screen name="Workouts" component={WorkoutScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="About"
+        options={{headerShown: false}}
+        component={AboutScreen}
+        initialParams={{userData: userData}}
+      />
     </Tab.Navigator>
   );
 };

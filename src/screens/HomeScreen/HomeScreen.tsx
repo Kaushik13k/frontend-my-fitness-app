@@ -6,7 +6,7 @@ import {ScreenEnum} from '../../utils/enums/ScreenEnum';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
 
-const HomeScreen = () => {
+const HomeScreen = ({route}) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 

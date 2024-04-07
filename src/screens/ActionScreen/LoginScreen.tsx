@@ -62,8 +62,8 @@ const LoginScreen = () => {
         const userDetails = await Login(userName, password, authToken);
         if (userDetails) {
           await AsyncStorage.setItem('userData', JSON.stringify(userDetails));
-          // Alert.alert('Login Passed', `Welcome ${username}`);
-          navigation.navigate(ScreenEnum.HOME);
+          console.log('User Details:', userDetails);
+          navigation.navigate(ScreenEnum.HOME, {userData: userDetails});
         }
       }
     } catch (error) {

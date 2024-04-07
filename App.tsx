@@ -11,12 +11,16 @@ import LoginScreen from './src/screens/ActionScreen/LoginScreen';
 import SignupScreen from './src/screens/ActionScreen/SignupScreen';
 import {ScreenEnum} from './src/utils/enums/ScreenEnum';
 import BottomTabNavigator from './src/screens/BottomTabNavigator';
+import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
+import PrivacyScreen from './src/screens/PrivacyScreen/PrivacyScreen';
 
 export type RootStackParamList = {
   [ScreenEnum.LANDING]: undefined;
   [ScreenEnum.LOGIN]: undefined;
   [ScreenEnum.SIGNUP]: undefined;
-  [ScreenEnum.HOME]: undefined;
+  [ScreenEnum.HOME]: {userData: any};
+  [ScreenEnum.PROFILE]: {userData: any};
+  [ScreenEnum.PRIVACY]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,6 +28,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState<any>(null); // State to hold userData
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -35,6 +40,7 @@ const App = () => {
           if (decoded.exp && new Date(decoded.exp * 1000) > new Date()) {
             // * 1000 to convert to millisecond from 1970-01-01
             setIsLoggedIn(true);
+            setUserData(ObjectData);
           } else {
             await AsyncStorage.removeItem('userData');
             Alert.alert(
@@ -81,14 +87,17 @@ const App = () => {
             component={SignupScreen}
             options={{headerShown: false}}
           />
-          {/* <Stack.Screen
-            name={ScreenEnum.HOME}
-            component={HomeScreen}
-            options={{headerShown: false}}
-          /> */}
+          <Stack.Screen name={ScreenEnum.HOME} options={{headerShown: false}}>
+            {() => <BottomTabNavigator userData={userData} />}
+          </Stack.Screen>
           <Stack.Screen
-            name={ScreenEnum.HOME}
-            component={BottomTabNavigator}
+            name={ScreenEnum.PROFILE}
+            component={ProfileScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={ScreenEnum.PRIVACY}
+            component={PrivacyScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
