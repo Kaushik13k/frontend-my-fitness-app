@@ -28,6 +28,7 @@ export default StyleSheet.create({
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
     marginBottom: 10,
+    color: 'black',
   },
   separator: {
     flexDirection: 'row',
@@ -57,5 +58,17 @@ export default StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 18,
+  },
+  dob: {
+    height: 40,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+  },
+  datePicker: {
+    flexDirection: 'row',
+  },
+  textInput: {
+    width: '80%',
   },
 });
