@@ -13,12 +13,16 @@ import {
   faCalendarDays,
   faBan,
 } from '@fortawesome/free-solid-svg-icons';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../App';
 
 import styles from './ProfileScreenStyle';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import {GetAuthToken} from '../../services/Authentication';
 import {getProfile} from '../../services/getProfile';
 import {postProfile} from '../../services/postProfile';
+import {ScreenEnum} from '../../utils/enums/ScreenEnum';
 
 interface User {
   firstname: string;
@@ -34,13 +38,14 @@ interface UserDetails {
 }
 
 const ProfileScreen = ({route}: {route: any}) => {
-  console.log('we are in profile page', route.params.userData.user);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   let initialFirstname = '';
   let initiallastname = '';
   let initialUsername = '';
   let initialEmail = '';
   let initialPhone = 0;
-  // let initialDob = 0;
 
   const [firstname, setFirstname] = useState(initialFirstname);
   const [lastname, setLastname] = useState(initiallastname);
@@ -113,7 +118,6 @@ const ProfileScreen = ({route}: {route: any}) => {
         );
         if (userDetails) {
           Alert.alert('Profile updated', 'Your profile has been updated');
-          // Add your page refresh logic here
         }
 
         if (!userDetails) {
@@ -150,7 +154,9 @@ const ProfileScreen = ({route}: {route: any}) => {
   };
 
   const updateBodyMeasurements = () => {
-    console.log('Body measurements updated');
+    console.log('Update Body Measurements clicked...');
+    navigation.navigate(ScreenEnum.BMASCREEN, {userData: route});
+    // navigation.navigate(ScreenEnum.BODYMEASUREMENTS, {userData: route});
   };
 
   useEffect(() => {

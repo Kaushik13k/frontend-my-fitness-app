@@ -107,7 +107,10 @@ const ProfileScreen = ({route}: {route: any}) => {
     {
       title: 'Security',
       subTitle: 'Change Password',
-      onPress: useCallback(() => console.log('Security clicked!'), []),
+      onPress: useCallback(() => {
+        console.log('Security clicked!');
+        navigation.navigate(ScreenEnum.FORGOT, {userData: route});
+      }, []),
     },
     {
       title: 'Help & Support',

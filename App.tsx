@@ -13,6 +13,9 @@ import {ScreenEnum} from './src/utils/enums/ScreenEnum';
 import BottomTabNavigator from './src/screens/BottomTabNavigator';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import PrivacyScreen from './src/screens/PrivacyScreen/PrivacyScreen';
+import ForgotPassword from './src/screens/ForgotPassword/ForgotPassword';
+import BodyMeasurements from './src/screens/BodyMeasurements/BodyMeasurements';
+import BMAnalytics from './src/screens/BMAnalytics/BMAnalytics';
 
 export type RootStackParamList = {
   [ScreenEnum.LANDING]: undefined;
@@ -21,6 +24,9 @@ export type RootStackParamList = {
   [ScreenEnum.HOME]: {userData: any};
   [ScreenEnum.PROFILE]: {userData: any};
   [ScreenEnum.PRIVACY]: undefined;
+  [ScreenEnum.FORGOT]: {userData: any};
+  [ScreenEnum.BMASCREEN]: {userData: any};
+  [ScreenEnum.BODYMEASUREMENTS]: {userData: any};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -98,6 +104,21 @@ const App = () => {
           <Stack.Screen
             name={ScreenEnum.PRIVACY}
             component={PrivacyScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={ScreenEnum.FORGOT}
+            component={ForgotPassword}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={ScreenEnum.BMASCREEN}
+            component={BMAnalytics}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={ScreenEnum.BODYMEASUREMENTS}
+            component={BodyMeasurements}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

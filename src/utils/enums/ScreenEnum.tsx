@@ -5,4 +5,7 @@ export enum ScreenEnum {
   HOME = 'BottomTabNavigator',
   PROFILE = 'ProfileScreen',
   PRIVACY = 'PrivacyScreen',
+  FORGOT = 'ForgotPassword',
+  BMASCREEN = 'BMAnalytics',
+  BODYMEASUREMENTS = 'BodyMeasurements',
 }
