@@ -1,17 +1,12 @@
 import React, {useState} from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Alert, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import {ScrollView} from 'react-native';
 import {GetAuthToken} from '../../services/Authentication';
 import {postBodyMeasurements} from '../../services/postBodyMeasurements';
+import styles from './BodyMeasurementsStyle';
+
 type InputWithLabelProps = {
   label: string;
   value: string;
@@ -276,41 +271,3 @@ const BodyMeasurements = ({route}: {route: any}) => {
 };
 
 export default BodyMeasurements;
-
-const styles = StyleSheet.create({
-  headerOptions: {
-    fontWeight: 'bold',
-    color: 'blue',
-    padding: 15,
-  },
-  headerTitle: {
-    fontWeight: 'bold',
-    color: 'black',
-    padding: 15,
-  },
-  input: {
-    height: 40,
-    marginTop: 0,
-    color: 'black',
-  },
-  container: {
-    justifyContent: 'center',
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  label: {
-    color: 'black',
-  },
-  inputContainer: {
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderBottomColor: 'gray',
-    borderBottomWidth: 0.5,
-  },
-  inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
