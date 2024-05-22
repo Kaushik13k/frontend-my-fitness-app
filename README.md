@@ -1,79 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Frontend: Gym App
 
-# Getting Started
+A brief description of your project.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+1. [Getting Started](#getting-started)
+2. [Prerequisites](#prerequisites)
+3. [Installation](#installation)
+4. [Running the Project](#running-the-project)
+5. [Troubleshooting](#troubleshooting)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Getting Started
 
-To start Metro, run the following command from the _root_ of your React Native project:
+These instructions will help you set up and run your React Native project on your local machine for development and testing purposes.
 
-```bash
-# using npm
-npm start
+## Prerequisites
 
-# OR using Yarn
-yarn start
+Make sure you have the following installed on your system:
+
+- **Node.js** (version 14 or higher recommended)
+- **npm** (comes with Node.js) or **yarn**
+- **Watchman** (brew install watchman`)
+- **React Native CLI** (`npm install -g react-native-cli`)
+- **Xcode** (for iOS development on macOS)
+- **Android Studio** (for Android development)
+- **Java SDK** (>17 and <21 `brew install openjdk@17`)
+- **ABD tools:**
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+brew install android-platform-tools
+
+adb devices
 ```
 
-## Step 2: Start your Application
+## Installation
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Clone the repository:
 
-### For Android
+```
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
 
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### For iOS
+### Install dependencies:
 
-```bash
-# using npm
-npm run ios
+```
+rm -rf node_modules package-lock.json
+npm install
 
-# OR using Yarn
-yarn ios
+-- or --
+
+rm -rf node_modules yarn.lock
+yarn install
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### ENV's:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+- Set environment variables `API_BASE_URL`
+- For androind: under `/android/` paste `fileName: local.properties` with content `sdk.dir = /Users/your_mac_username/Library/Android/sdk`
 
-## Step 3: Modifying your App
+### Start Project:
 
-Now that you have successfully run the app, let's modify it.
+```
+npx react-native run-android
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Verify Environment Setup:
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+1. Run the doctor command:
 
-## Congratulations! :tada:
+```
+npx react-native doctor
 
-You've successfully run and modified your React Native App. :partying_face:
+```
 
-### Now what?
+2. Follow the recommendations:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Address any issues or warnings reported by the doctor command.
