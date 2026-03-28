@@ -43,6 +43,7 @@ export default function LandingPage() {
     <MainScreen
       imageUrl={require('../../assets/main-page.jpg')}
       // buttonOpacity={buttonOpacity}
+      // commentedt test
     />
   );
 }
