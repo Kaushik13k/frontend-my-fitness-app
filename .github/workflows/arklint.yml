@@ -1,6 +1,9 @@
-name: Architecture Check
+name: Arklint
+
 on:
   pull_request:
+  push:
+    branches: [main]
 
 jobs:
   arklint:
@@ -9,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: Kaushik13k/arklint@v1
+
+      - uses: Kaushik13k/ark-lint@main
         with:
-          args: check --diff origin/main --github-annotations
+          strict: "true"
+          diff: "origin/main"
