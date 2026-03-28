@@ -1,0 +1,14 @@
+name: Architecture Check
+on:
+  pull_request:
+
+jobs:
+  arklint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: Kaushik13k/arklint@v1
+        with:
+          args: check --diff origin/main --github-annotations
